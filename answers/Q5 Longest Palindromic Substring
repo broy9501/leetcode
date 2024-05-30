@@ -1,0 +1,20 @@
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        string = longestSubstring = ''
+
+        def isPalindrome(string):
+            return string == string[::-1]
+
+        if isPalindrome(s):
+            return s
+        else:
+            for i in range(len(s)):
+                for j in range(i+1, len(s)+1):
+                    string = s[i:j]
+                    if isPalindrome(string) and len(string) > len(longestSubstring):
+                        longestSubstring = string
+        return longestSubstring

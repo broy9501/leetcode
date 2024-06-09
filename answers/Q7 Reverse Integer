@@ -1,0 +1,26 @@
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        rev = 0
+        INT_MAX = 2**31 - 1
+        INT_MIN = -2**31
+        sign = 1 if x > 0 else -1
+        x = abs(x)
+        
+
+        while x > 0:
+            a = x % 10
+            if rev > (INT_MAX - a) / 10:
+                return 0
+            rev = rev * 10 + a
+            x = x // 10
+        rev *=  sign
+
+        return rev
+
+
+        if rev < INT_MIN or rev > INT_MAX:
+            return 0

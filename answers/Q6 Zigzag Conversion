@@ -1,0 +1,30 @@
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        if (numRows < 2):
+            return s
+        stringA = [[] for i in range(numRows)]
+
+        index = 0
+        direction = 1 #1 for down, -1 for up
+        for char in s:
+            stringA[index % numRows].append(char)
+
+            if index == 0:
+                direction = 1
+            elif index == numRows - 1:
+                direction = -1
+
+            index += direction
+
+
+        result = ""
+        for sublist in stringA:
+            for char in sublist:
+                result += char
+    
+        return result
